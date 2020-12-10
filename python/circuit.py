@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from constants import *
 from Cell import Cell
 from Wire import Wire
@@ -10,7 +12,6 @@ for i in range(numCols):
 
 numTries = 100
 for i in range(numWires):
-    print(i)
     tries = 0
     start = cells[random.randint(0,len(cells)-1)]
     while start.open is False:
@@ -20,7 +21,6 @@ for i in range(numWires):
         start = cells[random.randint(0,len(cells)-1)]
     wire = Wire(start)
     wire.create_wire()
-    print(len(wire.cells))
     if len(wire.cells) > minLineLength:
         wires.append(wire)
 

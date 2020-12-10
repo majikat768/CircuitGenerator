@@ -2,11 +2,9 @@ from constants import *
 
 class Wire:
     def __init__(self, start):
-        print('creating wire')
         self.cells = []
         self.forks = []
         self.start = start
-        self.start.open = False
         self.currentDirection = self.find_open_direction()
         self.cells.append(start)
         self.isFork = False
