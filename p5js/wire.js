@@ -10,7 +10,7 @@ function Wire(start) {
 
   this.draw_vias = function() {
     strokeWeight(cellSize/6);
-    stroke(WIRE_COL['r'],WIRE_COL['g'],WIRE_COL['b']);
+    stroke(WIRE_COL)
     fill(0)
     start = this.cells[0];
     end = this.cells[this.cells.length-1];
@@ -68,8 +68,14 @@ function Wire(start) {
       let d = possible_directions[i];
       let next_cell = get_cell(current_cell.x + d[0], current_cell.y + d[1]);
       if(next_cell != null && next_cell.open) {
-        this.current_direction = d;
-        return next_cell;
+        let adj_cells = [
+          get_cell(current_cell.x + d[0], current_cell.y), 
+          get_cell(current_cell.x, current_cell.y + d[1])
+        ]
+        if(adj_cells[0].open || adj_cells[1].open) {
+          this.current_direction = d;
+          return next_cell;
+        }
       }
     }
     return null;
@@ -77,7 +83,7 @@ function Wire(start) {
 
   this.draw_wire = function() {
     strokeWeight(lineWidth)
-    stroke(WIRE_COL['r'],WIRE_COL['g'],WIRE_COL['b']);
+    stroke(WIRE_COL)
     for(let i = 0; i < this.cells.length-1; i += 1) {
       let c1 = this.cells[i];
       let c2 = this.cells[i+1]

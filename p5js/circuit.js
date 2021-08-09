@@ -5,8 +5,10 @@ let directions = [
   [0,-1],[1,-1]
 ]
 
-let numRows = 20 
-let numCols = 40
+let BOARD_COL = [25,75,25]
+let WIRE_COL = [150,128,50]
+let numRows = 24
+let numCols = 36
 let cellSize = 20
 let cells = []
 let wires = []
@@ -16,10 +18,6 @@ let numWires = 80;
 let lineWidth = cellSize/4;
 let W = numCols * cellSize;
 let H = numRows * cellSize
-
-let BOARD_COL = {'r':25, 'g':75, 'b':25}
-let WIRE_COL = {'r':150, 'g':128, 'b':50}
-
 
 for(let i = 0; i < numCols; i += 1) {
   for(let j = 0; j < numRows; j += 1) {
@@ -35,11 +33,11 @@ for(let i = 0; i < numWires; i += 1) {
 
 function setup() {
   createCanvas(W,H);
-  background(color(BOARD_COL['r'],BOARD_COL['g'],BOARD_COL['b']));
+  background(BOARD_COL);
 }
 
 function draw() {
-  background(color(BOARD_COL['r'],BOARD_COL['g'],BOARD_COL['b']));
+  background(BOARD_COL);
   //draw_grid();
   fill(255);
   for(let i = 0; i < wires.length; i += 1) {
